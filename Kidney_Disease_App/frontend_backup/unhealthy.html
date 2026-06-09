@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Warning - Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏥 Health Assessment Result</h1>
+        </header>
+
+        <main class="main-content">
+            <section class="result-section unhealthy-result">
+                <div class="result-card warning">
+                    <div class="result-icon">⚠️</div>
+                    <h2>Health Alert: CKD Risk Detected</h2>
+                    <p class="status-message">Your health parameters suggest a potential risk of Chronic Kidney Disease (CKD). Please consult a healthcare professional immediately.</p>
+                    
+                    <div class="confidence-box warning">
+                        <p><strong>Confidence Level:</strong> <span id="confidenceLevel">85%</span></p>
+                    </div>
+
+                    <div class="recommendations unhealthy-recommendations">
+                        <h3>🔴 IMMEDIATE ACTIONS REQUIRED</h3>
+                        <div class="urgent-actions">
+                            <p><strong>⚡ Priority 1: Consult a Nephrologist</strong></p>
+                            <ul>
+                                <li>Schedule an appointment with a kidney specialist (Nephrologist) as soon as possible</li>
+                                <li>Get comprehensive kidney function tests (Creatinine, GFR, BUN, Urinalysis)</li>
+                                <li>Blood pressure monitoring</li>
+                            </ul>
+                        </div>
+
+                        <h3>💛 DIETARY RECOMMENDATIONS for CKD</h3>
+                        <ul>
+                            <li><strong>Limit Sodium:</strong> Reduce to 1500-2300mg per day</li>
+                            <li><strong>Control Protein:</strong> Moderate intake (doctor-recommended amount)</li>
+                            <li><strong>Monitor Potassium:</strong> Limit foods high in potassium</li>
+                            <li><strong>Restrict Phosphorus:</strong> Avoid dairy, nuts, seeds</li>
+                            <li><strong>Fluid Intake:</strong> May need to limit depending on kidney stage</li>
+                            <li><strong>Avoid Processed Foods:</strong> They contain high sodium and additives</li>
+                        </ul>
+
+                        <h3>🏋️ LIFESTYLE MODIFICATIONS</h3>
+                        <ul>
+                            <li><strong>Regular Exercise:</strong> Moderate physical activity (consult doctor first)</li>
+                            <li><strong>Blood Pressure Control:</strong> Keep below 130/80 mmHg</li>
+                            <li><strong>Quit Smoking:</strong> Smoking accelerates kidney damage</li>
+                            <li><strong>Limit Alcohol:</strong> No more than 1 drink per day for women, 2 for men</li>
+                            <li><strong>Reduce Stress:</strong> Practice meditation and yoga</li>
+                            <li><strong>Adequate Sleep:</strong> Aim for 7-9 hours per night</li>
+                        </ul>
+
+                        <h3>⚕️ MEDICAL MANAGEMENT</h3>
+                        <ul>
+                            <li>Take blood pressure medications as prescribed</li>
+                            <li>Monitor blood sugar (if diabetic)</li>
+                            <li>Avoid NSAIDs and similar pain relievers</li>
+                            <li>Regular lab work and monitoring</li>
+                            <li>Follow nephrologist's treatment plan</li>
+                        </ul>
+
+                        <h3>📋 TESTS YOU SHOULD GET DONE</h3>
+                        <ul>
+                            <li>Serum Creatinine Test</li>
+                            <li>eGFR (Estimated Glomerular Filtration Rate)</li>
+                            <li>Blood Urea Nitrogen (BUN)</li>
+                            <li>Urinalysis</li>
+                            <li>Blood Pressure Check</li>
+                            <li>Electrolyte Panel</li>
+                            <li>Renal Ultrasound or Imaging</li>
+                        </ul>
+
+                        <div class="emergency-info">
+                            <h3>🚨 SEEK IMMEDIATE MEDICAL CARE IF:</h3>
+                            <ul>
+                                <li>Sudden decrease in urine output</li>
+                                <li>Severe swelling in legs, ankles, or face</li>
+                                <li>Shortness of breath</li>
+                                <li>Chest pain or pressure</li>
+                                <li>Severe headache with vision changes</li>
+                                <li>Blood in urine</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="goBack()" class="btn btn-primary">← New Prediction</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Kidney Disease Prediction System | Your Health Matters</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get confidence from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const confidence = urlParams.get('confidence');
+        if (confidence) {
+            document.getElementById('confidenceLevel').textContent = Math.round(confidence) + '%';
+        }
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

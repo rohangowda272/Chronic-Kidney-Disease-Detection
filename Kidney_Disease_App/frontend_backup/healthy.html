@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Result - Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏥 Health Assessment Result</h1>
+        </header>
+
+        <main class="main-content">
+            <section class="result-section healthy-result">
+                <div class="result-card">
+                    <div class="result-icon">✅</div>
+                    <h2>Great News! You're Healthy</h2>
+                    <p class="status-message">Based on your health parameters, you show NO signs of Chronic Kidney Disease (CKD).</p>
+                    
+                    <div class="confidence-box">
+                        <p><strong>Confidence Level:</strong> <span id="confidenceLevel">95%</span></p>
+                    </div>
+
+                    <div class="recommendations healthy-recommendations">
+                        <h3>💚 Recommendations to Maintain Your Health</h3>
+                        <ul>
+                            <li><strong>Stay Hydrated:</strong> Drink 2-3 liters of water daily to support kidney function</li>
+                            <li><strong>Maintain Balanced Diet:</strong> Include fresh fruits, vegetables, and whole grains</li>
+                            <li><strong>Reduce Salt Intake:</strong> Keep daily salt consumption under 2300mg</li>
+                            <li><strong>Regular Exercise:</strong> Aim for 30 minutes of physical activity daily</li>
+                            <li><strong>Monitor Blood Pressure:</strong> Keep it below 120/80 mmHg</li>
+                            <li><strong>Avoid Smoking & Alcohol:</strong> Both can damage kidney function</li>
+                            <li><strong>Regular Check-ups:</strong> Get kidney function tests annually</li>
+                            <li><strong>Manage Stress:</strong> Practice meditation, yoga, or breathing exercises</li>
+                        </ul>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="goBack()" class="btn btn-primary">← New Prediction</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Kidney Disease Prediction System | Stay Healthy!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get confidence from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const confidence = urlParams.get('confidence');
+        if (confidence) {
+            document.getElementById('confidenceLevel').textContent = Math.round(confidence) + '%';
+        }
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

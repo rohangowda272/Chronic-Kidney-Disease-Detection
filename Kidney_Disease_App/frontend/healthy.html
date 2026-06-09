@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Result - Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="prediction-style.css">
+</head>
+<body>
+    <div class="result-container healthy-bg">
+        <div class="result-card">
+            <div class="result-icon success">
+                <span class="icon-large">✅</span>
+            </div>
+            
+            <h1 class="result-title success">No Kidney Disease Detected</h1>
+            
+            <div class="confidence-badge success">
+                <span class="confidence-label">Confidence Level:</span>
+                <span class="confidence-value" id="confidenceValue">--</span>%
+            </div>
+            
+            <div class="result-message">
+                <p>Based on the health parameters provided, our analysis indicates that you do not show signs of Chronic Kidney Disease (CKD).</p>
+            </div>
+            
+            <div class="recommendations">
+                <h3>📋 Recommendations</h3>
+                <ul>
+                    <li>✓ <strong>Maintain a healthy lifestyle:</strong> Continue regular exercise and balanced diet</li>
+                    <li>✓ <strong>Stay hydrated:</strong> Drink 8-10 glasses of water daily</li>
+                    <li>✓ <strong>Regular checkups:</strong> Schedule annual health screenings</li>
+                    <li>✓ <strong>Monitor blood pressure:</strong> Keep blood pressure under 120/80 mmHg</li>
+                    <li>✓ <strong>Control blood sugar:</strong> Maintain healthy glucose levels</li>
+                    <li>✓ <strong>Limit salt intake:</strong> Reduce sodium to less than 2,300mg per day</li>
+                </ul>
+            </div>
+            
+            <div class="health-tips">
+                <h3>💡 Kidney Health Tips</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <span class="tip-icon">💧</span>
+                        <h4>Stay Hydrated</h4>
+                        <p>Drink plenty of water throughout the day</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-icon">🥗</span>
+                        <h4>Healthy Diet</h4>
+                        <p>Eat fruits, vegetables, and whole grains</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-icon">🏃</span>
+                        <h4>Exercise Regularly</h4>
+                        <p>At least 30 minutes of activity daily</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-icon">🚭</span>
+                        <h4>Avoid Smoking</h4>
+                        <p>Quit smoking to protect your kidneys</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn--primary btn--lg" onclick="window.location.href='prediction.html'">
+                    🔄 New Prediction
+                </button>
+                <button class="btn btn--secondary btn--lg" onclick="window.print()">
+                    🖨️ Print Report
+                </button>
+                <button class="btn btn--outline btn--lg" onclick="window.location.href='index.html'">
+                    🏠 Back to Home
+                </button>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>⚠️ Important:</strong> This is a screening tool only. For a complete diagnosis, please consult a qualified healthcare professional.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get confidence from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const confidence = urlParams.get('confidence');
+        
+        if (confidence) {
+            document.getElementById('confidenceValue').textContent = parseFloat(confidence).toFixed(2);
+        }
+    </script>
+</body>
+</html>

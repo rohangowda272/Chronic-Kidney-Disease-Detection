@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="prediction-style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Kidney Disease Prediction</h1>
+            </div>
+            <div class="header-right">
+                <span class="user-greeting" id="userGreeting">Welcome!</span>
+                <button class="btn-logout" onclick="handleLogout()">🚪 Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <a href="prediction.html" class="nav-item active">🔬 Prediction</a>
+                <a href="#" class="nav-item">📊 History</a>
+                <a href="#" class="nav-item">⚙️ Settings</a>
+                <a href="#" class="nav-item">❓ Help</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2>🧬 Chronic Kidney Disease Risk Assessment</h2>
+                <p class="subtitle">Advanced ML-based diagnostic tool analyzing 24 health parameters</p>
+            </section>
+
+            <!-- Info Card -->
+            <div class="info-card">
+                <h3>📊 About This System</h3>
+                <p>Advanced Machine Learning-based assessment tool for chronic kidney disease risk prediction.</p>
+                <ul>
+                    <li>✓ 24 health parameters analyzed (11 numeric + 13 categorical)</li>
+                    <li>✓ 97%+ Accuracy</li>
+                    <li>✓ Instant Results</li>
+                    <li>✓ Evidence-based recommendations</li>
+                </ul>
+                <div class="disclaimer">
+                    <strong>⚠️ Disclaimer:</strong> This tool is for informational purposes only and should not replace professional medical advice. Always consult with a qualified healthcare provider.
+                </div>
+            </div>
+
+            <!-- Prediction Form -->
+            <form id="predictionForm" class="prediction-form">
+                <h3 class="form-title">🔬 Enter Patient Health Parameters</h3>
+                <p class="form-subtitle">Fill in the following health metrics (leave blank if not available)</p>
+
+                <!-- NUMERIC FEATURES (11) -->
+                <div class="form-section">
+                    <h4 class="section-title">📈 Numeric Features</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age" class="form-label">Age (years)</label>
+                            <input type="number" id="age" name="age" class="form-control" placeholder="e.g., 48" min="0" max="120" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bp" class="form-label">Blood Pressure (mm/Hg)</label>
+                            <input type="number" id="bp" name="bp" class="form-control" placeholder="e.g., 80" min="0" max="200" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sg" class="form-label">Specific Gravity</label>
+                            <input type="number" id="sg" name="sg" class="form-control" placeholder="e.g., 1.020" min="1.000" max="1.050" step="0.001">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="al" class="form-label">Albumin (0-5)</label>
+                            <input type="number" id="al" name="al" class="form-control" placeholder="e.g., 0" min="0" max="5" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="su" class="form-label">Sugar (0-5)</label>
+                            <input type="number" id="su" name="su" class="form-control" placeholder="e.g., 0" min="0" max="5" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bgr" class="form-label">Blood Glucose Random (mgs/dl)</label>
+                            <input type="number" id="bgr" name="bgr" class="form-control" placeholder="e.g., 121" min="0" max="500" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bu" class="form-label">Blood Urea (mgs/dl)</label>
+                            <input type="number" id="bu" name="bu" class="form-control" placeholder="e.g., 36" min="0" max="300" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sc" class="form-label">Serum Creatinine (mgs/dl)</label>
+                            <input type="number" id="sc" name="sc" class="form-control" placeholder="e.g., 1.2" min="0" max="20" step="0.1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sod" class="form-label">Sodium (mEq/L)</label>
+                            <input type="number" id="sod" name="sod" class="form-control" placeholder="e.g., 137" min="0" max="200" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pot" class="form-label">Potassium (mEq/L)</label>
+                            <input type="number" id="pot" name="pot" class="form-control" placeholder="e.g., 4.6" min="0" max="10" step="0.1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hemo" class="form-label">Hemoglobin (gms)</label>
+                            <input type="number" id="hemo" name="hemo" class="form-control" placeholder="e.g., 15.4" min="0" max="20" step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORICAL FEATURES (13) -->
+                <div class="form-section">
+                    <h4 class="section-title">🔍 Categorical Features</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rbc" class="form-label">Red Blood Cells</label>
+                            <select id="rbc" name="rbc" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="normal">Normal</option>
+                                <option value="abnormal">Abnormal</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pc" class="form-label">Pus Cell</label>
+                            <select id="pc" name="pc" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="normal">Normal</option>
+                                <option value="abnormal">Abnormal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pcc" class="form-label">Pus Cell Clumps</label>
+                            <select id="pcc" name="pcc" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="notpresent">Not Present</option>
+                                <option value="present">Present</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ba" class="form-label">Bacteria</label>
+                            <select id="ba" name="ba" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="notpresent">Not Present</option>
+                                <option value="present">Present</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pcv" class="form-label">Packed Cell Volume</label>
+                            <input type="number" id="pcv" name="pcv" class="form-control" placeholder="e.g., 44" min="0" max="100" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="wc" class="form-label">White Blood Cell Count (cells/cumm)</label>
+                            <input type="number" id="wc" name="wc" class="form-control" placeholder="e.g., 7800" min="0" max="50000" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rc" class="form-label">Red Blood Cell Count (millions/cmm)</label>
+                            <input type="number" id="rc" name="rc" class="form-control" placeholder="e.g., 5.2" min="0" max="10" step="0.1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="htn" class="form-label">Hypertension</label>
+                            <select id="htn" name="htn" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dm" class="form-label">Diabetes Mellitus</label>
+                            <select id="dm" name="dm" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cad" class="form-label">Coronary Artery Disease</label>
+                            <select id="cad" name="cad" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appet" class="form-label">Appetite</label>
+                            <select id="appet" name="appet" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="good">Good</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pe" class="form-label">Pedal Edema</label>
+                            <select id="pe" name="pe" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ane" class="form-label">Anemia</label>
+                            <select id="ane" name="ane" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary btn--lg btn--full-width">
+                        🔍 Analyze Health Data
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="prediction-script.js"></script>
+</body>
+</html>

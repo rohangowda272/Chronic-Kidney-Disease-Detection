@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKD Detected - Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="prediction-style.css">
+</head>
+<body>
+    <div class="result-container unhealthy-bg">
+        <div class="result-card">
+            <div class="result-icon warning">
+                <span class="icon-large">⚠️</span>
+            </div>
+            
+            <h1 class="result-title warning">Chronic Kidney Disease Detected</h1>
+            
+            <div class="confidence-badge warning">
+                <span class="confidence-label">Confidence Level:</span>
+                <span class="confidence-value" id="confidenceValue">--</span>%
+            </div>
+            
+            <div class="result-message alert">
+                <p><strong>Important:</strong> Based on the health parameters provided, our analysis indicates potential signs of Chronic Kidney Disease (CKD).</p>
+                <p>Please consult with a healthcare professional immediately for proper diagnosis and treatment.</p>
+            </div>
+            
+            <div class="urgent-actions">
+                <h3>🚨 Immediate Actions Required</h3>
+                <ul>
+                    <li>❗ <strong>Consult a Nephrologist:</strong> Schedule an appointment with a kidney specialist as soon as possible</li>
+                    <li>❗ <strong>Complete Medical Tests:</strong> Get comprehensive kidney function tests (GFR, creatinine clearance)</li>
+                    <li>❗ <strong>Monitor Symptoms:</strong> Watch for swelling, fatigue, decreased urination, or nausea</li>
+                    <li>❗ <strong>Blood Pressure Control:</strong> Monitor and manage blood pressure daily</li>
+                    <li>❗ <strong>Medication Review:</strong> Discuss all current medications with your doctor</li>
+                </ul>
+            </div>
+            
+            <div class="recommendations">
+                <h3>📋 Lifestyle Recommendations</h3>
+                <div class="recommendation-grid">
+                    <div class="recommendation-item">
+                        <span class="rec-icon">🥗</span>
+                        <h4>Kidney-Friendly Diet</h4>
+                        <ul>
+                            <li>Limit protein intake</li>
+                            <li>Reduce sodium (less than 2g/day)</li>
+                            <li>Control potassium and phosphorus</li>
+                            <li>Avoid processed foods</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <span class="rec-icon">💊</span>
+                        <h4>Medication Management</h4>
+                        <ul>
+                            <li>Take prescribed medications regularly</li>
+                            <li>Avoid NSAIDs (ibuprofen, aspirin)</li>
+                            <li>Discuss supplements with doctor</li>
+                            <li>Monitor for side effects</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <span class="rec-icon">💧</span>
+                        <h4>Fluid Management</h4>
+                        <ul>
+                            <li>Monitor fluid intake</li>
+                            <li>Avoid excessive water consumption</li>
+                            <li>Track daily urine output</li>
+                            <li>Limit alcohol intake</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <span class="rec-icon">🩺</span>
+                        <h4>Regular Monitoring</h4>
+                        <ul>
+                            <li>Monthly blood tests</li>
+                            <li>Regular blood pressure checks</li>
+                            <li>Track weight daily</li>
+                            <li>Monitor for swelling (edema)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="warning-signs">
+                <h3>⚡ Warning Signs to Watch For</h3>
+                <div class="signs-grid">
+                    <div class="sign-card urgent">
+                        <strong>Severe Symptoms (Emergency)</strong>
+                        <ul>
+                            <li>Severe swelling in legs/feet</li>
+                            <li>Difficulty breathing</li>
+                            <li>Chest pain</li>
+                            <li>Confusion or drowsiness</li>
+                        </ul>
+                    </div>
+                    <div class="sign-card">
+                        <strong>Monitor These Symptoms</strong>
+                        <ul>
+                            <li>Decreased urine output</li>
+                            <li>Persistent fatigue</li>
+                            <li>Nausea and vomiting</li>
+                            <li>Loss of appetite</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Helpful Resources</h3>
+                <ul>
+                    <li>🏥 <strong>National Kidney Foundation:</strong> www.kidney.org</li>
+                    <li>📖 <strong>CKD Education:</strong> Learn about stages of kidney disease</li>
+                    <li>👥 <strong>Support Groups:</strong> Connect with others managing CKD</li>
+                    <li>🍽️ <strong>Renal Diet Plan:</strong> Work with a dietitian for personalized meal plans</li>
+                </ul>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn--primary btn--lg" onclick="window.location.href='prediction.html'">
+                    🔄 New Prediction
+                </button>
+                <button class="btn btn--secondary btn--lg" onclick="window.print()">
+                    🖨️ Print Report for Doctor
+                </button>
+                <button class="btn btn--outline btn--lg" onclick="window.location.href='index.html'">
+                    🏠 Back to Home
+                </button>
+            </div>
+            
+            <div class="disclaimer critical">
+                <p><strong>🚨 CRITICAL NOTICE:</strong> This is a screening tool and NOT a medical diagnosis. The results should not be used as a substitute for professional medical advice, diagnosis, or treatment. Please seek immediate medical attention from a qualified healthcare provider.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get confidence from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const confidence = urlParams.get('confidence');
+        
+        if (confidence) {
+            document.getElementById('confidenceValue').textContent = parseFloat(confidence).toFixed(2);
+        }
+    </script>
+</body>
+</html>
